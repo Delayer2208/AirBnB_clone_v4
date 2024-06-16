@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta Information -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Holberton AirBnB</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../static/images/icon.png?{{ cache_id }}">
+
+    <!-- CSS Styles -->
+    <link rel="stylesheet" href="../static/styles/4-common.css?{{ cache_id }}">
+    <link rel="stylesheet" href="../static/styles/3-header.css?{{ cache_id }}">
+    <link rel="stylesheet" href="../static/styles/3-footer.css?{{ cache_id }}">
+    <link rel="stylesheet" href="../static/styles/6-filters.css?{{ cache_id }}">
+    <link rel="stylesheet" href="../static/styles/8-places.css?{{ cache_id }}">
+    <link rel="stylesheet" href="../static/styles/font-awesome.css?{{ cache_id }}">
+  </head>
+
+  <body>
+    <!-- Header Section -->
+    <header>
+    </header>
+
+    <main>
+      <div class="container">
+        <!-- Filters Section -->
+        <section class="filters">
+          <!-- Locations Filter -->
+          <div class="locations">
+            <h3>States</h3>
+            <h4>&nbsp;</h4>
+            <ul class="popover">
+              {% for state in states|dictsort %}
+              <h2>{{ state[0] }}</h2>
+              <ul>
+                {% for city in state[1].cities|sort(attribute='name') %}
+                <li>{{ city.name }}</li>
+                {% endfor %}
+              </ul>
+              {% endfor %}
+            </ul>
+          </div>
+
+          <!-- Amenities Filter -->
+          <div class="amenities">
+            <h3>Amenities</h3>
+            <h4>&nbsp;</h4>
+            <ul class="popover">
+              {% for amenity in amens|sort(attribute='name') %}
+              <li>{{ amenity.name }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+
+         
